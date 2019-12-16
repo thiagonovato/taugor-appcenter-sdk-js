@@ -1,0 +1,38 @@
+{
+	"name": "@taugor/appcenter-sdk-js",
+	"version": "0.0.1",
+	"description": "SDK JS to connect with Taguro Appcenter",
+	"main": "index.js",
+	"scripts": {
+		"prebuild": "rimraf ./dist",
+		"build": "npx babel . --out-dir 'dist' --ignore node_modules --copy-files"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zerobytes/taugor-appcenter-sdk-js.git"
+	},
+	"bugs": {
+		"url": "https://github.com/zerobytes/taugor-appcenter-sdk-js/issues"
+	},
+	"keywords": [
+		"authentication",
+		"common-ground"
+	],
+	"author": "Zerobyte",
+	"contributors": [
+		"guilherme.ferreira@zerobyte.app",
+		"bruno.teixeira.silva@gmail.com"
+	],
+	"license": "MIT",
+	"dependencies": {
+		"@taugor/appcenter-models": "git+https://github.com/zerobytes/taugor-appcenter-models.git",
+		"axios": "^0.19.0"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.7.5",
+		"@babel/core": "^7.7.5",
+		"@babel/preset-env": "^7.7.6",
+		"babel-plugin-module-resolver": "^4.0.0",
+		"rimraf": "^3.0.0"
+	}
+}
