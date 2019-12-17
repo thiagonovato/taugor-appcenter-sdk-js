@@ -6,6 +6,7 @@
 			{
 				"root": ["./src"],
 				"alias": {
+					"@basic": "./src/BasicApi.js",
 					"@axios": "./src/axios-config.js",
 					"@services": "./src/services/"
 				}

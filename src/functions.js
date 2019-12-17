@@ -1,5 +1,5 @@
 import axios from "@axios";
-const _request = (path, mode, params, data) => {
+const _request = (path, mode, params, data, authorization) => {
 	let uriString = path;
 	let p = [];
 	Object.keys(params).map(param => {
@@ -9,13 +9,23 @@ const _request = (path, mode, params, data) => {
 		uriString = uriString.slice(0, -1);
 	}
 	uriString += p.join("&");
-	return axios[mode](uriString, data);
+	const config = {};
+	if (authorization) {
+		config.headers = { Authorization: authorization };
+	}
+	return axios[mode](uriString, data, config);
 };
-const _post = (path, data) => {
-	return _request(path, "post", {}, data);
+const _post = (path, data, authorization) => {
+	return _request(path, "post", {}, data, authorization);
 };
-const _get = (path, params) => {
-	return _request(path, "get", params, {});
+const _put = (path, data, authorization) => {
+	return _request(path, "put", {}, data, authorization);
+};
+const _delete = (path, data, authorization) => {
+	return _request(path, "delete", {}, data, authorization);
+};
+const _get = (path, params, authorization) => {
+	return _request(path, "get", params, {}, authorization);
 };
 
-export { _request, _post, _get };
+export { _request, _post, _get, _put, _delete };
