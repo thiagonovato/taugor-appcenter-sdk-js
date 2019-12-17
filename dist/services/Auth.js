@@ -10,10 +10,10 @@ var _functions = require("../functions.js");
 var Auth = function Auth() {
   var _private = {
     post: function post(path, data) {
-      return _post("/auth/" + path, data);
+      return (0, _functions._post)("/auth/" + path, data);
     },
     get: function get(path, params) {
-      return _post("/auth/" + path, params);
+      return (0, _functions._get)("/auth/" + path, params);
     }
   };
   var service = {
@@ -33,5 +33,6 @@ var Auth = function Auth() {
   return service;
 };
 
-var _default = Auth;
+var _default = Auth();
+
 exports["default"] = _default;

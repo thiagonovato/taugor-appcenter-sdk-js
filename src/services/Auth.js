@@ -1,9 +1,9 @@
-import { _request } from "../functions.js";
+import { _post, _get } from "../functions.js";
 
 const Auth = () => {
 	const _private = {
 		post: (path, data) => _post("/auth/" + path, data),
-		get: (path, params) => _post("/auth/" + path, params)
+		get: (path, params) => _get("/auth/" + path, params)
 	};
 	let service = {
 		authenticate: (user, password, fromApp) => {
@@ -24,4 +24,4 @@ const Auth = () => {
 	return service;
 };
 
-export default Auth;
+export default Auth();
