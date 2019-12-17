@@ -1,6 +1,6 @@
 import { _post, _get } from "../functions.js";
 
-const _localExecutionToken = "";
+let _localExecutionToken = "";
 
 const Auth = () => {
 	const $tokenKey = "auth-token";

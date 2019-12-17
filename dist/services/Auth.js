@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _functions = require("../functions.js");
 
-function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
-
 var _localExecutionToken = "";
 
 var Auth = function Auth() {
@@ -22,7 +20,7 @@ var Auth = function Auth() {
     },
     setToken: function setToken(token) {
       if (typeof localStorage === "undefined") {
-        _localExecutionToken = (_readOnlyError("_localExecutionToken"), token);
+        _localExecutionToken = token;
         return;
       }
 
