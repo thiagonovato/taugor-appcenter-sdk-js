@@ -2,10 +2,9 @@
 	"name": "@taugor/appcenter-sdk-js",
 	"version": "0.0.1",
 	"description": "SDK JS to connect with Taguro Appcenter",
-	"main": "index.js",
+	"main": "dist/index.js",
 	"scripts": {
-		"prebuild": "rimraf ./dist",
-		"build": "npx babel . --out-dir 'dist' --ignore node_modules --copy-files"
+		"build": "babel 'src' --out-dir 'dist' --copy-files"
 	},
 	"repository": {
 		"type": "git",
