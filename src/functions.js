@@ -13,7 +13,11 @@ const _request = (path, mode, params, data, authorization) => {
 	if (authorization) {
 		config.headers = { Authorization: authorization };
 	}
-	return axios[mode](uriString, data, config);
+	if (mode === "get" || mode === "delete") {
+		return axios[mode](uriString, config);
+	} else {
+		return axios[mode](uriString, data, config);
+	}
 };
 const _post = (path, data, authorization) => {
 	return _request(path, "post", null, data, authorization);

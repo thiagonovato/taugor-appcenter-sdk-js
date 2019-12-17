@@ -29,7 +29,11 @@ var _request = function _request(path, mode, params, data, authorization) {
     };
   }
 
-  return _axiosConfig["default"][mode](uriString, data, config);
+  if (mode === "get" || mode === "delete") {
+    return _axiosConfig["default"][mode](uriString, config);
+  } else {
+    return _axiosConfig["default"][mode](uriString, data, config);
+  }
 };
 
 exports._request = _request;
