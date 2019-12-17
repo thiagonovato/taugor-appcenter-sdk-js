@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var _request = function _request(path, mode, params, data, authorization) {
   var uriString = path;
   var p = [];
-  Object.keys(params).map(function (param) {
+  Object.keys(params || {}).map(function (param) {
     p.push(encodeURIComponent("".concat(param, "=").concat(params[param])));
   });
 
@@ -35,25 +35,25 @@ var _request = function _request(path, mode, params, data, authorization) {
 exports._request = _request;
 
 var _post = function _post(path, data, authorization) {
-  return _request(path, "post", {}, data, authorization);
+  return _request(path, "post", null, data, authorization);
 };
 
 exports._post = _post;
 
 var _put = function _put(path, data, authorization) {
-  return _request(path, "put", {}, data, authorization);
+  return _request(path, "put", null, data, authorization);
 };
 
 exports._put = _put;
 
-var _delete = function _delete(path, data, authorization) {
-  return _request(path, "delete", {}, data, authorization);
+var _delete = function _delete(path, authorization) {
+  return _request(path, "delete", null, null, authorization);
 };
 
 exports._delete = _delete;
 
 var _get = function _get(path, params, authorization) {
-  return _request(path, "get", params, {}, authorization);
+  return _request(path, "get", params, null, authorization);
 };
 
 exports._get = _get;

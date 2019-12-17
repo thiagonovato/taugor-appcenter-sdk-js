@@ -1,4 +1,4 @@
-import { _post, _get, _put, _delete } from "../functions.js";
+import { _post, _get, _put, _delete } from "./functions.js";
 import AuthService from "@sevices/Auth";
 
 const BasicApi = function({ basePath }) {
@@ -6,9 +6,9 @@ const BasicApi = function({ basePath }) {
 		post: (path, data) =>
 			_post(basePath + path, data, AuthService.token.current()),
 		put: (path, data) =>
-			_post(basePath + path, data, AuthService.token.current()),
+			_put(basePath + path, data, AuthService.token.current()),
 		delete: (path, data) =>
-			_post(basePath + path, data, AuthService.token.current()),
+			_delete(basePath + path, data, AuthService.token.current()),
 		get: (path, params) =>
 			_get(basePath + path, params, AuthService.token.current())
 	};

@@ -5,7 +5,7 @@ const Auth = () => {
 	const _private = {
 		post: (path, data) => _post("/auth" + path, data),
 		get: (path, params) => _get("/auth" + path, params),
-		saveToken: token => {
+		setToken: token => {
 			localStorage.setItem($tokenKey, token);
 		},
 		getToken: () => {
@@ -21,11 +21,20 @@ const Auth = () => {
 					fromApp
 				})
 				.then(r => {
-					return r.data;
+					_private.setToken(r.headers.authorization);
+					return {
+						user: r.data,
+						token: r.headers.authorization
+					};
 				});
 		},
 		token: {
-			current: () => _private.getToken()
+			current: token => {
+				if (token === undefined) {
+					return _private.getToken();
+				}
+				_private.setToken(token);
+			}
 		}
 	};
 	return service;

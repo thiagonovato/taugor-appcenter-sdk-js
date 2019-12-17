@@ -16,7 +16,7 @@ var Auth = function Auth() {
     get: function get(path, params) {
       return (0, _functions._get)("/auth" + path, params);
     },
-    saveToken: function saveToken(token) {
+    setToken: function setToken(token) {
       localStorage.setItem($tokenKey, token);
     },
     getToken: function getToken() {
@@ -30,12 +30,21 @@ var Auth = function Auth() {
         password: password,
         fromApp: fromApp
       }).then(function (r) {
-        return r.data;
+        _private.setToken(r.headers.authorization);
+
+        return {
+          user: r.data,
+          token: r.headers.authorization
+        };
       });
     },
     token: {
-      current: function current() {
-        return _private.getToken();
+      current: function current(token) {
+        if (token === undefined) {
+          return _private.getToken();
+        }
+
+        _private.setToken(token);
       }
     }
   };

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _functions = require("../functions.js");
+var _functions = require("./functions.js");
 
 var _Auth = _interopRequireDefault(require("@sevices/Auth"));
 
@@ -18,10 +18,10 @@ var BasicApi = function BasicApi(_ref) {
       return (0, _functions._post)(basePath + path, data, _Auth["default"].token.current());
     },
     put: function put(path, data) {
-      return (0, _functions._post)(basePath + path, data, _Auth["default"].token.current());
+      return (0, _functions._put)(basePath + path, data, _Auth["default"].token.current());
     },
     "delete": function _delete(path, data) {
-      return (0, _functions._post)(basePath + path, data, _Auth["default"].token.current());
+      return (0, _functions._delete)(basePath + path, data, _Auth["default"].token.current());
     },
     get: function get(path, params) {
       return (0, _functions._get)(basePath + path, params, _Auth["default"].token.current());
