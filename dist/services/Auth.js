@@ -7,6 +7,10 @@ exports["default"] = void 0;
 
 var _functions = require("../functions.js");
 
+function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
+
+var _localExecutionToken = "";
+
 var Auth = function Auth() {
   var $tokenKey = "auth-token";
   var _private = {
@@ -17,9 +21,15 @@ var Auth = function Auth() {
       return (0, _functions._get)("/auth" + path, params);
     },
     setToken: function setToken(token) {
+      if (!localStorage) {
+        _localExecutionToken = (_readOnlyError("_localExecutionToken"), token);
+        return;
+      }
+
       localStorage.setItem($tokenKey, token);
     },
     getToken: function getToken() {
+      if (!localStorage) return _localExecutionToken;
       return localStorage.getItem($tokenKey);
     }
   };

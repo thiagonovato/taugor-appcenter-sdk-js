@@ -1,14 +1,22 @@
 import { _post, _get } from "../functions.js";
 
+const _localExecutionToken = "";
+
 const Auth = () => {
 	const $tokenKey = "auth-token";
 	const _private = {
 		post: (path, data) => _post("/auth" + path, data),
 		get: (path, params) => _get("/auth" + path, params),
 		setToken: token => {
+			if (!localStorage) {
+				_localExecutionToken = token;
+				return;
+			}
+
 			localStorage.setItem($tokenKey, token);
 		},
 		getToken: () => {
+			if (!localStorage) return _localExecutionToken;
 			return localStorage.getItem($tokenKey);
 		}
 	};
