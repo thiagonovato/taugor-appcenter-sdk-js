@@ -11,5 +11,11 @@ const _request = (path, mode, params, data) => {
 	uriString += p.join("&");
 	return axios[mode](uriString, data);
 };
+const _post = (path, data) => {
+	return _request(path, "post", {}, data);
+};
+const _get = (path, params) => {
+	return _request(path, "get", params, {});
+};
 
-export { _request };
+export { _request, _post, _get };

@@ -2,12 +2,8 @@ import { _request } from "./functions.js";
 
 const Auth = () => {
 	const private = {
-		post: data => {
-			_request("/auth", "post", {}, data);
-		},
-		get: params => {
-			_request("/auth", "get", params, {});
-		}
+		post: (path, data) => _post("/auth/" + path, data),
+		get: (path, params) => _post("/auth/" + path, params)
 	};
 	let service = {
 		authenticate: (user, password, fromApp) => {
