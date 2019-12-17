@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports._get = exports._post = exports._request = void 0;
 
-var _axiosConfig = _interopRequireDefault(require("../axios-config.js"));
+var _axiosConfig = _interopRequireDefault(require("./axios-config.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
