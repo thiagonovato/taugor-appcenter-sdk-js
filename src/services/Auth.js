@@ -1,4 +1,4 @@
-import { _request } from "./functions.js";
+import { _request } from "../functions.js";
 
 const Auth = () => {
 	const _private = {
