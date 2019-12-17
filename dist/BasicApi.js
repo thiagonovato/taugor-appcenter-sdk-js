@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _functions = require("./functions.js");
 
-var _Auth = _interopRequireDefault(require("@sevices/Auth"));
+var _Auth = _interopRequireDefault(require("./services/Auth"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

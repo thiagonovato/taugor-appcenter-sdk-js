@@ -1,5 +1,5 @@
 import { _post, _get, _put, _delete } from "./functions.js";
-import AuthService from "@sevices/Auth";
+import AuthService from "@services/Auth";
 
 const BasicApi = function({ basePath }) {
 	const _private = {
