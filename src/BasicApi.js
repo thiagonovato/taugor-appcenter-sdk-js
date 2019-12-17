@@ -4,13 +4,21 @@ import AuthService from "@services/Auth";
 const BasicApi = function({ basePath }) {
 	const _private = {
 		post: (path, data) =>
-			_post(basePath + path, data, AuthService.token.current()),
+			_post(basePath + path, data, AuthService.token.current()).then(
+				r => r.data
+			),
 		put: (path, data) =>
-			_put(basePath + path, data, AuthService.token.current()),
+			_put(basePath + path, data, AuthService.token.current()).then(
+				r => r.data
+			),
 		delete: (path, data) =>
-			_delete(basePath + path, data, AuthService.token.current()),
+			_delete(basePath + path, data, AuthService.token.current()).then(
+				r => r.data
+			),
 		get: (path, params) =>
-			_get(basePath + path, params, AuthService.token.current())
+			_get(basePath + path, params, AuthService.token.current()).then(
+				r => r.data
+			)
 	};
 	this.get = function(id) {
 		return _private.get(`/${id}`);

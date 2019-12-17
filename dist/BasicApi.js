@@ -15,16 +15,24 @@ var BasicApi = function BasicApi(_ref) {
   var basePath = _ref.basePath;
   var _private = {
     post: function post(path, data) {
-      return (0, _functions._post)(basePath + path, data, _Auth["default"].token.current());
+      return (0, _functions._post)(basePath + path, data, _Auth["default"].token.current()).then(function (r) {
+        return r.data;
+      });
     },
     put: function put(path, data) {
-      return (0, _functions._put)(basePath + path, data, _Auth["default"].token.current());
+      return (0, _functions._put)(basePath + path, data, _Auth["default"].token.current()).then(function (r) {
+        return r.data;
+      });
     },
     "delete": function _delete(path, data) {
-      return (0, _functions._delete)(basePath + path, data, _Auth["default"].token.current());
+      return (0, _functions._delete)(basePath + path, data, _Auth["default"].token.current()).then(function (r) {
+        return r.data;
+      });
     },
     get: function get(path, params) {
-      return (0, _functions._get)(basePath + path, params, _Auth["default"].token.current());
+      return (0, _functions._get)(basePath + path, params, _Auth["default"].token.current()).then(function (r) {
+        return r.data;
+      });
     }
   };
 
