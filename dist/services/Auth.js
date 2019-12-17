@@ -7,6 +7,8 @@ exports["default"] = void 0;
 
 var _functions = require("../functions.js");
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
 
 var _localExecutionToken = "";
@@ -21,7 +23,7 @@ var Auth = function Auth() {
       return (0, _functions._get)("/auth" + path, params);
     },
     setToken: function setToken(token) {
-      if (!localStorage) {
+      if ((typeof localStorage === "undefined" ? "undefined" : _typeof(localStorage)) === undefined) {
         _localExecutionToken = (_readOnlyError("_localExecutionToken"), token);
         return;
       }
@@ -29,7 +31,7 @@ var Auth = function Auth() {
       localStorage.setItem($tokenKey, token);
     },
     getToken: function getToken() {
-      if (!localStorage) return _localExecutionToken;
+      if ((typeof localStorage === "undefined" ? "undefined" : _typeof(localStorage)) === undefined) return _localExecutionToken;
       return localStorage.getItem($tokenKey);
     }
   };

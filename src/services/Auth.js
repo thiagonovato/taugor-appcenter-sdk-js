@@ -8,7 +8,7 @@ const Auth = () => {
 		post: (path, data) => _post("/auth" + path, data),
 		get: (path, params) => _get("/auth" + path, params),
 		setToken: token => {
-			if (!localStorage) {
+			if (typeof localStorage === undefined) {
 				_localExecutionToken = token;
 				return;
 			}
@@ -16,7 +16,7 @@ const Auth = () => {
 			localStorage.setItem($tokenKey, token);
 		},
 		getToken: () => {
-			if (!localStorage) return _localExecutionToken;
+			if (typeof localStorage === undefined) return _localExecutionToken;
 			return localStorage.getItem($tokenKey);
 		}
 	};
