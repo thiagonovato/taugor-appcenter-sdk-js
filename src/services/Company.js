@@ -6,4 +6,9 @@ class Company extends BasicApi {
 	}
 }
 
+Company.prototype.groups = {
+	list: ({ company }) => {
+		return this._rest.get(`/${company}/groups`);
+	}
+};
 export default Company;

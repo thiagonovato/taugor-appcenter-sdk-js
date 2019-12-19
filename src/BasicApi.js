@@ -2,7 +2,7 @@ import { _post, _get, _put, _delete } from "./functions.js";
 import AuthService from "@services/Auth";
 
 const BasicApi = function({ basePath }) {
-	const _private = {
+	this._rest = {
 		post: (path, data) =>
 			_post(basePath + path, data, AuthService.token.current()).then(
 				r => r.data
@@ -21,19 +21,19 @@ const BasicApi = function({ basePath }) {
 			)
 	};
 	this.get = function(id) {
-		return _private.get(`/${id}`);
+		return this._rest.get(`/${id}`);
 	};
 	this.create = function(props) {
-		return _private.post("", props);
+		return this._rest.post("", props);
 	};
 	this.update = function(id, props) {
-		return _private.put(`/${id}`, props);
+		return this._rest.put(`/${id}`, props);
 	};
 	this.list = function(filters) {
-		return _private.get("");
+		return this._rest.get("");
 	};
 	this.delete = function(id) {
-		return _private.delete(`/${id}`);
+		return this._rest.delete(`/${id}`);
 	};
 	return this;
 };

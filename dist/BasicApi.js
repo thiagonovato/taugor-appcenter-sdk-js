@@ -13,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var BasicApi = function BasicApi(_ref) {
   var basePath = _ref.basePath;
-  var _private = {
+  this._rest = {
     post: function post(path, data) {
       return (0, _functions._post)(basePath + path, data, _Auth["default"].token.current()).then(function (r) {
         return r.data;
@@ -37,23 +37,23 @@ var BasicApi = function BasicApi(_ref) {
   };
 
   this.get = function (id) {
-    return _private.get("/".concat(id));
+    return this._rest.get("/".concat(id));
   };
 
   this.create = function (props) {
-    return _private.post("", props);
+    return this._rest.post("", props);
   };
 
   this.update = function (id, props) {
-    return _private.put("/".concat(id), props);
+    return this._rest.put("/".concat(id), props);
   };
 
   this.list = function (filters) {
-    return _private.get("");
+    return this._rest.get("");
   };
 
   this["delete"] = function (id) {
-    return _private["delete"]("/".concat(id));
+    return this._rest["delete"]("/".concat(id));
   };
 
   return this;

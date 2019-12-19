@@ -7,7 +7,9 @@ exports["default"] = void 0;
 
 var _BasicApi2 = _interopRequireDefault(require("../BasicApi.js"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _this = void 0;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -39,5 +41,11 @@ function (_BasicApi) {
   return Group;
 }(_BasicApi2["default"]);
 
+Group.prototype.members = {
+  list: function list(_ref) {
+    var group = _ref.group;
+    return _this._rest.get("/".concat(group, "/members"));
+  }
+};
 var _default = Group;
 exports["default"] = _default;
