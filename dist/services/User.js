@@ -7,9 +7,7 @@ exports["default"] = void 0;
 
 var _BasicApi2 = _interopRequireDefault(require("../BasicApi.js"));
 
-var _this = void 0;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -31,27 +29,30 @@ function (_BasicApi) {
   _inherits(User, _BasicApi);
 
   function User() {
+    var _this;
+
     _classCallCheck(this, User);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(User).call(this, {
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(User).call(this, {
       basePath: "/user"
     }));
+    _this.groups = {
+      list: function list(_ref) {
+        var user = _ref.user,
+            company = _ref.company;
+
+        if (company) {
+          return this._rest.get("/".concat(user, "/groupsByCompany/").concat(company === true ? "" : company));
+        }
+
+        return this._rest.get("/".concat(user, "/groups"));
+      }
+    };
+    return _this;
   }
 
   return User;
 }(_BasicApi2["default"]);
 
-User.prototype.groups = {
-  list: function list(_ref) {
-    var user = _ref.user,
-        company = _ref.company;
-
-    if (company) {
-      return _this._rest.get("/".concat(user, "/groupsByCompany/").concat(company === true ? "" : company));
-    }
-
-    return _this._rest.get("/".concat(user, "/groups"));
-  }
-};
 var _default = User;
 exports["default"] = _default;
