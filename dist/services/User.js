@@ -15,9 +15,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -36,16 +36,19 @@ function (_BasicApi) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(User).call(this, {
       basePath: "/user"
     }));
+
+    var self = _assertThisInitialized(_this);
+
     _this.groups = {
       list: function list(_ref) {
         var user = _ref.user,
             company = _ref.company;
 
         if (company) {
-          return this._rest.get("/".concat(user, "/groupsByCompany/").concat(company === true ? "" : company));
+          return self._rest.get("/".concat(user, "/groupsByCompany/").concat(company === true ? "" : company));
         }
 
-        return this._rest.get("/".concat(user, "/groups"));
+        return self._rest.get("/".concat(user, "/groups"));
       }
     };
     return _this;

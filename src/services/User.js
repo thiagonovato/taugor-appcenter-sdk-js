@@ -3,16 +3,17 @@ import BasicApi from "@basic";
 class User extends BasicApi {
 	constructor() {
 		super({ basePath: "/user" });
+		const self = this;
 		this.groups = {
 			list: function({ user, company }) {
 				if (company) {
-					return this._rest.get(
+					return self._rest.get(
 						`/${user}/groupsByCompany/${
 							company === true ? "" : company
 						}`
 					);
 				}
-				return this._rest.get(`/${user}/groups`);
+				return self._rest.get(`/${user}/groups`);
 			}
 		};
 	}
