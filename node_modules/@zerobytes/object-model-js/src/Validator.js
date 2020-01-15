@@ -1,8 +1,5 @@
-const FT = require('./FieldTypes');
-const FieldTypes = FT.default;
-const FieldType = FT.FieldType;
-const ComplexTypes = FT.ComplexTypes;
-const ModelBase = require('./ModelBase').default;
+import FieldTypes, { FieldType, ComplexTypes } from './FieldTypes';
+import ModelBase from './ModelBase';
 
 /**
  * Validates if a given value is of a given type
@@ -11,18 +8,13 @@ const ModelBase = require('./ModelBase').default;
  * @param {any} value
  */
 const validateObjectType = (typeDef, value) => {
-	if (
-		!(typeDef instanceof FieldType) ||
-		value === null ||
-		value === undefined
-	) {
+	if (!(typeDef instanceof FieldType) || value === null || value === undefined) {
 		return true;
 	}
 	let valid = true;
 	switch (typeDef.complexType) {
 		case ComplexTypes.IdOf:
-			if (value === null || value === undefined || value === '')
-				return valid;
+			if (value === null || value === undefined || value === '') return valid;
 			return typeof value === 'string';
 		case ComplexTypes.ShapedAs:
 			if (typeof value !== 'object') return false;
@@ -115,7 +107,7 @@ const validateType = (type, value) => {
 	return valid;
 };
 
-exports.default = (model, property) => {
+export default (model, property) => {
 	let value = model[property];
 	let config = model.$fieldConfig[property];
 	let valid = true;

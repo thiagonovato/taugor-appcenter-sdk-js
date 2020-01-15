@@ -1,5 +1,5 @@
-const PlainObject = require('./PlainObject').default;
+import PlainObject from './PlainObject';
 
 class ShapeBase extends PlainObject {}
 
-exports.default = ShapeBase;
+export default ShapeBase;

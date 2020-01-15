@@ -11,10 +11,10 @@ const ComplexTypes = {
 	IdOf: 'IdOf'
 };
 
-exports.FieldType = FieldType;
-exports.ComplexTypes = ComplexTypes;
+export { FieldType };
+export { ComplexTypes };
 
-exports.default = {
+export default {
 	String: 'string',
 	Integer: 'integer',
 	Float: 'float',

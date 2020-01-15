@@ -2,8 +2,6 @@
 
 _Defines a common-ground for API, mobile and web applications._
 
-**NOTE: Downgraded to CJS, due to compatibility issues.**
-
 ### Prior to using
 
 ```

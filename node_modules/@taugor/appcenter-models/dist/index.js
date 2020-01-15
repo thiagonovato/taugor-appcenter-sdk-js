@@ -1,22 +1,28 @@
 "use strict";
 
 //Models for export
-var Company = require('./models/Company')["default"];
+var Auth = require('./src/models/Auth')["default"];
 
-var Group = require('./models/Group')["default"];
+var App = require('./src/models/App')["default"];
 
-var Permission = require('./models/Permission')["default"];
+var Company = require('./src/models/Company')["default"];
 
-var User = require('./models/User')["default"]; //Shapes for export
+var Group = require('./src/models/Group')["default"];
+
+var Permission = require('./src/models/Permission')["default"];
+
+var User = require('./src/models/User')["default"]; //Shapes for export
 
 
-var shapes = require('./shapes');
+var shapes = require('./src/shapes');
 
 var billing = shapes.billing;
 var contactPerson = shapes.contactPerson;
 var locationAddress = shapes.locationAddress;
 var permissionReference = shapes.permissionReference;
 module.exports = {
+  Auth: Auth,
+  App: App,
   Company: Company,
   Group: Group,
   Permission: Permission,
