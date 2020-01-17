@@ -10,7 +10,7 @@ var _axios = _interopRequireDefault(require("axios"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var api = _axios["default"].create({
-  baseURL: "https://us-central1-taugor-appcenter.cloudfunctions.net/webApi/api/v1"
+  baseURL: "https://us-central1-taugor-appcenter.cloudfunctions.net/webApi/v1"
 });
 
 var _default = api;
