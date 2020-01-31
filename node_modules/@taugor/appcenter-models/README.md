@@ -1,13 +1,15 @@
-## Taugor Auth models
+## Taugor AppCenter models (@taugor/appcenter-models)
 
-Taugor models package for authentication entities. Common ground.
+Taugor Corporation models package for authentication entities. Common ground.
 
-**NOTE: Downgraded to CJS, due to compatibility issues.**
+## Updates
 
-### Prior to using
+Update `package.json` version and run:
 
 ```
-npm run build
+git commit --all && git commit -m "UPDATE: version bump or <anything to add here>"
+
+git push -u origin master
 ```
 
-If it builds, it is testable and might be alright.
+Thanks!

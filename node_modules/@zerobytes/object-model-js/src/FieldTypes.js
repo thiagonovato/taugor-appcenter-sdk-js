@@ -7,6 +7,7 @@ class FieldType {
 const ComplexTypes = {
 	ShapedAs: 'ShapedAs',
 	ArrayOf: 'ArrayOf',
+	CollectionOf: 'CollectionOf',
 	InstanceOf: 'InstanceOf',
 	IdOf: 'IdOf'
 };
@@ -35,5 +36,8 @@ export default {
 	},
 	IdOf: (ModelBase) => {
 		return new FieldType(ComplexTypes.IdOf, ModelBase);
+	},
+	CollectionOf: (Type) => {
+		return new FieldType(ComplexTypes.CollectionOf, Type);
 	}
 };
