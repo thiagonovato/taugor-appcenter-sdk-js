@@ -18,8 +18,16 @@ var Auth = function Auth() {
     get: function get(path, params) {
       return (0, _functions._get)('/auth' + path, params);
     },
-    "delete": function _delete(path, params) {
-      return (0, _functions._delete)('/auth' + path);
+    "delete": function _delete(path, authToken) {
+      return (0, _functions._delete)('/auth' + path, authToken);
+    },
+    removeToken: function removeToken() {
+      if (typeof localStorage === 'undefined') {
+        _localExecutionToken = '';
+        return;
+      }
+
+      localStorage.removeItem($tokenKey);
     },
     setToken: function setToken(token) {
       if (typeof localStorage === 'undefined') {
@@ -37,7 +45,13 @@ var Auth = function Auth() {
   var service = {
     //TODO: add logout method
     logout: function logout() {
-      return _private["delete"]('', _private.getToken());
+      return _private["delete"]('', _private.getToken())["catch"](function (e) {
+        if (!!e.code && !!e.message) return Promise.reject(e);
+
+        _private.removeToken();
+
+        return Promise.resolve(e);
+      });
     },
     authenticate: function authenticate(user, password, fromApp) {
       return _private.post('', {

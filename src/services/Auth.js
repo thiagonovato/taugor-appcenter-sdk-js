@@ -7,7 +7,15 @@ const Auth = () => {
 	const _private = {
 		post: (path, data) => _post('/auth' + path, data),
 		get: (path, params) => _get('/auth' + path, params),
-		delete: (path, params) => _delete('/auth' + path),
+		delete: (path, authToken) => _delete('/auth' + path, authToken),
+		removeToken: () => {
+			if (typeof localStorage === 'undefined') {
+				_localExecutionToken = '';
+				return;
+			}
+
+			localStorage.removeItem($tokenKey);
+		},
 		setToken: (token) => {
 			if (typeof localStorage === 'undefined') {
 				_localExecutionToken = token;
@@ -24,7 +32,13 @@ const Auth = () => {
 	let service = {
 		//TODO: add logout method
 		logout: () => {
-			return _private.delete('', _private.getToken());
+			return _private.delete('', _private.getToken()).catch((e) => {
+				if (!!e.code && !!e.message) return Promise.reject(e);
+
+				_private.removeToken();
+
+				return Promise.resolve(e);
+			});
 		},
 		authenticate: (user, password, fromApp) => {
 			return _private
