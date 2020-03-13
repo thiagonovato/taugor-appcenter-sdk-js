@@ -12,8 +12,8 @@ const ShapeBase = omj.ShapeBase;
  * @property {FieldTypes.String} country
  */
 class LocationAddress extends ShapeBase {
-	constructor() {
-		super();
+	constructor(data = null) {
+		super(data);
 		this.line1 = '';
 		this.line2 = '';
 		this.postalCode = '';

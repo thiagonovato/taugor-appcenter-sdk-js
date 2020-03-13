@@ -19,6 +19,7 @@ class Permission extends ModelBase {
 		this.$fieldConfig = {
 			title: {
 				type: FieldTypes.String,
+				order: true,
 				validate: () =>
 					validator(this, 'title')
 						.isOfType()

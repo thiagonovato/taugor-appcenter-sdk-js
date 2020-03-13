@@ -30,6 +30,15 @@ ModelBase.prototype.getService = function(firebase, store, reducerName) {
 			case FieldTypes.Boolean:
 				defaultObject[property] = field.defaultValue;
 				break;
+			case FieldTypes.Array:
+			case FieldTypes.ArrayOf:
+				defaultObject[property] = field.defaultValue || [];
+				break;
+			case FieldTypes.Object:
+			case FieldTypes.ShapedAs:
+			case FieldTypes.InstanceOf:
+				defaultObject[property] = field.defaultValue || {};
+				break;
 			default:
 				defaultObject[property] = field.defaultValue || '';
 				break;

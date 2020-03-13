@@ -7,19 +7,30 @@ exports["default"] = void 0;
 
 var _functions = require("../functions.js");
 
-var _localExecutionToken = "";
+var _localExecutionToken = '';
 
 var Auth = function Auth() {
-  var $tokenKey = "auth-token";
+  var $tokenKey = 'auth-token';
   var _private = {
     post: function post(path, data) {
-      return (0, _functions._post)("/auth" + path, data);
+      return (0, _functions._post)('/auth' + path, data);
     },
     get: function get(path, params) {
-      return (0, _functions._get)("/auth" + path, params);
+      return (0, _functions._get)('/auth' + path, params);
+    },
+    "delete": function _delete(path, authToken) {
+      return (0, _functions._delete)('/auth' + path, authToken);
+    },
+    removeToken: function removeToken() {
+      if (typeof localStorage === 'undefined') {
+        _localExecutionToken = '';
+        return;
+      }
+
+      localStorage.removeItem($tokenKey);
     },
     setToken: function setToken(token) {
-      if (typeof localStorage === "undefined") {
+      if (typeof localStorage === 'undefined') {
         _localExecutionToken = token;
         return;
       }
@@ -27,13 +38,23 @@ var Auth = function Auth() {
       localStorage.setItem($tokenKey, token);
     },
     getToken: function getToken() {
-      if (typeof localStorage === "undefined") return _localExecutionToken;
+      if (typeof localStorage === 'undefined') return _localExecutionToken;
       return localStorage.getItem($tokenKey);
     }
   };
   var service = {
+    //TODO: add logout method
+    logout: function logout() {
+      return _private["delete"]('', _private.getToken())["catch"](function (e) {
+        if (!!e.code && !!e.message) return Promise.reject(e);
+
+        _private.removeToken();
+
+        return Promise.resolve(e);
+      });
+    },
     authenticate: function authenticate(user, password, fromApp) {
-      return _private.post("", {
+      return _private.post('', {
         user: user,
         password: password,
         fromApp: fromApp

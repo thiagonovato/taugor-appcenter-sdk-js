@@ -9,8 +9,8 @@ const ShapeBase = omj.ShapeBase;
  * @property {FieldTypes.Boolean} active
  */
 class PermissionReference extends ShapeBase {
-	constructor(properties = null) {
-		super();
+	constructor(data = null) {
+		super(data);
 		this.uid = '';
 		this.active = true;
 		this.$fieldConfig = {

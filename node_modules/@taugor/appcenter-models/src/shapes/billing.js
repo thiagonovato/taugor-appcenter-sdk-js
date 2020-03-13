@@ -10,8 +10,8 @@ const ShapeBase = omj.ShapeBase;
  * @property {FieldTypes.String} bank
  */
 class Billing extends ShapeBase {
-	constructor() {
-		super();
+	constructor(data = null) {
+		super(data);
 		this.account = '';
 		this.agency = '';
 		this.bank = '';

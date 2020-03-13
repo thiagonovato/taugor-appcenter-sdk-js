@@ -1,6 +1,6 @@
 {
 	"name": "@taugor/taugor-appcenter-sdk-js",
-	"version": "0.0.7",
+	"version": "0.0.10",
 	"description": "SDK JS to connect with Taguro Appcenter",
 	"main": "dist/index.js",
 	"scripts": {
@@ -25,7 +25,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"@taugor/appcenter-models": "git+https://49c966ab91bbe3e5c3a79b02ec01f9fc2f589689:x-oauth-basic@github.com/zerobytes/taugor-appcenter-models.git",
-		"axios": "^0.19.0"
+		"axios": "^0.19.2"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.7.5",
